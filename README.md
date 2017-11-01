@@ -10,9 +10,9 @@ That sounds reasonable, but it's easier said than done, because only a small fra
 
 While the rules of the VisionCoin ICO are already lined out in the Whitepaper, this resource will present you a more comprehensive description of the inner workings of the ICO Smart Contract. 
 
-Transparency is a key value at Foundervision and to build up trust we opened our ICO Smart Contract functionality for everyone to see. Be assured that this is the beginning of a future standard for all of our work with a Blockchain: nothing will be hidden or obfuscated. It can't work otherwise.
+Transparency is a key value at Foundervision and to build up trust we opened our ICO Smart Contract functionality for everyone else to see. Be assured that this is the beginning of a future standard for all of our work with the Blockchain: nothing will be hidden or obfuscated. It can't work otherwise. Transparency is the key.
 
-In the following documentation we will use `VC` when we reference to the tokens (`V`ision`C`oin) and `SC` when we reference a `S`mart `C`ontract.
+In the following documentation we will use `VC` when we reference to the tokens (`V`ision`C`oin) and `SC` when we reference a Smart Contract (`S`mart `C`ontract).
 
 All the contracts functionality is tested and the test cases can be seen at the end of this document and, if you are interested in the testing sources, in the `/test` folder.
 
@@ -25,11 +25,11 @@ At the time the `SC` is deployed to the network it will generate 200.000.000 Tok
 After the `VC`s are created, the total supply will be split in half.
 
  - `100.000.000 VC` will go to a special ICO wallet which will be used to serve `VC` during the ICO.
- - `100.000.000 VC` will go to a wallet owned by Foundervision. These 100.000.000 `VC`s will be splitted into different wallets again, but this is not part of the `SC`.
+ - `100.000.000 VC` will go to a wallet owned by Foundervision. These 100.000.000 `VC`s will be splitted into different wallets again to deversify and lower the risk of being hacked as a whole, but that's not part of the `SC`.
 
-During initialization, the `SC` will setup a date range in which the Pre-ICO and the ICO will take place. It does not necessarily mean that the token sale will start or end at exactly these dates. It's just a boundary that will limit the ICO duration.
+During deployment, the `SC` will setup a date range in which the Pre-ICO and the ICO will take place. It does not necessarily mean that the token sale will start or end at exactly these dates. It's just a boundary that will limit the ICO duration.
 
-250.000 of the 100.000.000 ICO `VC`s will be handed out as a present to people that show interest in the Coin via http://www.foundervision.com and register themselves together with their wallet address. This special offer will be available until the end of the ICO. Each registration on the homepage will lead to a 10 `VC` present until the 250.000 `VC` pot is empty. 
+A defined amount of the 100.000.000 ICO `VC`s will be handed out as a present to people that show interest in the Coin via http://www.foundervision.com and register themselves together with their wallet address. This special offer will be available until the end of the ICO. Each registration on the homepage will lead to a 10 `VC` present until the 250.000 `VC` pot is empty. 
 
 The Pre-ICO is restricted to a maximum supply of `50.000.000 VC`. If this supply is exceeded with a transaction while the Pre-ICO is running, the transaction will be rejected.
 
@@ -45,7 +45,7 @@ We defined a fixed exchange ratio of 1000/1, which means that with each `Ether` 
 
 ### Minimum transaction
 
-In the Pre-ICO phase, the minimum transaction consists of 20 Ether. 
+In the Pre-ICO phase, the minimum transaction is of variable Ether, you can see the minimum rates at http://www.foundervision.com 
 
 In the ICO Phase a minimum of 0,01 Ether (10 `VC`) is set. Transaction below these limits will be rejected.
 
@@ -65,7 +65,7 @@ The `SC` holds a variable to identify the stage of the contract. This stage can 
 
 The ICO is split into two main stages. 
 
-In the Pre-ICO stage you'll get an `additional 20 %` on top, but to participate in the Pre-ICO, a minimum deposit of `20 Ether` is required. 
+In the Pre-ICO stage you'll get an `additional 20 %` on top, but to participate in the Pre-ICO, a minimum deposit of `XX Ether` is required. 
 
 In the ICO phase there is a lower limit of 0,01 Ether to participate and the bonus table is the same as in the Pre-ICO phase. The bonus table applies to both phases.
 
@@ -717,56 +717,6 @@ You can either use the development environment (docker) provided with source
 in the `.docker` directory and exposed via Makefile.
 
 Or you can install all dependencies by yourself.
-
-### Without docker
-
-You'll need at least node 7.6, since the tests make heavy use of `async` and 
-`await`. The docker image uses `node:latest`, which, as the time of writing,
-links to Node.js 8.5.0.
-
-Example installation:
-
-```bash
-# install dependencies
-npm install -g testrpc
-npm install -g truffle
-
-# clone repository and install other dependencies
-git clone ... vision-coin
-cd vision-coin
-npm install
-```
-
-Running the tests:
-
-```bash
-# start the testrpc instance 
-# (this will not start docker, it's just a shared startup script)
-./.docker/testrpc/start.sh
-
-# Open a new terminal and run
-truffle test --network local
-```
-
-### With docker
-
-You can make use of the included Makefile to simplify most common calls.
-
-Installation (docker should be available on your system):
-
-```bash
-make network-create
-make rpc-build
-make truffle-build
-```
-
-Running the tests:
-
-```bash
-make truffle-test
-```
-
-Please explode the `Makefile` for more commands.
 
 ## testrpc
 
